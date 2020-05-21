@@ -1,0 +1,159 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+:root {
+    --cell-size: 100px;
+    --xo-size: calc(var(--cell-size) * .9);
+}
+
+.board {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.block {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.block:first-child,
+.block:nth-child(2),
+.block:nth-child(3) {
+    border-top: none;
+}
+
+.block:last-child,
+.block:nth-child(8),
+.block:nth-child(7) {
+    border-bottom: none;
+}
+
+.block:nth-child(3n + 1){
+    border-left: none;
+}
+
+.block:nth-child(3n){
+    border-right: none;
+}
+
+.block.x::before,
+.block.x::after{
+    background-color: black;
+}
+
+.board.x .block:not(.x):not(.o):hover::before,
+.board.x .block:not(.x):not(.o):hover::after{
+    background-color: lightgrey;
+}
+
+
+.block.x::before,
+.block.x::after,
+.board.x .block:not(.x):not(.o):hover::before,
+.board.x .block:not(.x):not(.o):hover::after{
+    content: '';
+    width: calc(var(--xo-size) * .15);
+    height: var(--xo-size);
+    position: absolute;
+}
+
+.block.x::before,
+.board.x .block:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+
+.block.x::after,
+.board.x .block:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+
+
+.block.o::before,
+.block.o::after{
+    background-color: black;
+}
+
+.board.o .block:not(.x):not(.o):hover::before,
+.board.o .block:not(.x):not(.o):hover::after{
+    background-color: lightgrey;
+}
+
+.block.o::before,
+.block.o::after,
+.board.o .block:not(.x):not(.o):hover::before,
+.board.o .block:not(.x):not(.o):hover::after{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.block.o::before,
+.board.o .block:not(.x):not(.o):hover::before{
+    width: var(--xo-size);
+    height: var(--xo-size);
+}
+
+.block.o::after,
+.board.o .block:not(.x):not(.o):hover::after{
+    width: calc(var(--xo-size) * .7);
+    height: calc(var(--xo-size) * .7);
+    background-color: white;
+}
+
+.block.x,
+.block.o{
+cursor: not-allowed;
+}
+
+.game-prompt-box{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0,.9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4rem;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.restart-game-button{
+    font-size: 2rem;
+    background-color: white;
+    padding: .25em .5em;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.restart-game-button:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.game-prompt-box.show{
+    display: flex;
+}
