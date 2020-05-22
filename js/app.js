@@ -50,14 +50,6 @@ function handleClick(e) {
     }
 }
 
-function placeMark(block, currentClass) {
-    block.classList.add(currentClass)
-}
-
-function swapTurn() {
-    oTurn = !oTurn
-}
-
 function setBoardHoverClass() {
     board.classList.remove(X_CLASS)
     board.classList.remove(O_CLASS)
@@ -68,6 +60,15 @@ function setBoardHoverClass() {
         board.classList.add(X_CLASS)
     }
 }
+
+function placeMark(block, currentClass) {
+    block.classList.add(currentClass)
+}
+
+function swapTurn() {
+    oTurn = !oTurn
+}
+
 
 function checkWin(currentClass) {
     return winningCombinations.some(combination => {
