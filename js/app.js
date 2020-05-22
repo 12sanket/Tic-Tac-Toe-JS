@@ -50,6 +50,10 @@ function handleClick(e) {
     }
 }
 
+function placeMark(block, currentClass) {
+    block.classList.add(currentClass)
+}
+
 function setBoardHoverClass() {
     board.classList.remove(X_CLASS)
     board.classList.remove(O_CLASS)
@@ -61,9 +65,6 @@ function setBoardHoverClass() {
     }
 }
 
-function placeMark(block, currentClass) {
-    block.classList.add(currentClass)
-}
 
 function swapTurn() {
     oTurn = !oTurn
