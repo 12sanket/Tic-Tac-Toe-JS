@@ -77,6 +77,13 @@ function checkWin(currentClass) {
     })
 }
 
+
+function isDraw(){
+    return [...blockElements].every(block =>{
+        return block.classList.contains(X_CLASS) || block.classList.contains(O_CLASS)
+    })
+}
+
 function endGame(draw) {
     if (draw) {
         winningMessage.innerText = 'Draw !'
@@ -84,10 +91,4 @@ function endGame(draw) {
         winningMessage.innerText = `${oTurn ? "O" : "X"} is the winner !`
     }
     winningPrompt.classList.add('show')
-}
-
-function isDraw(){
-    return [...blockElements].every(block =>{
-        return block.classList.contains(X_CLASS) || block.classList.contains(O_CLASS)
-    })
 }
